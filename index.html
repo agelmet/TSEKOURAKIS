@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Πολυχρόνης Τσεκουράκης — Φυσικοθεραπεία Πυλαία | 30 Χρόνια Εμπειρίας</title>
+<meta name="description" content="Εξειδικευμένος Φυσικοθεραπευτής με 30 χρόνια κλινικής εμπειρίας στην Πυλαία. McKenzie, Bobath, TECAR, Κρουστικός Υπέρηχος, Pilates Reformer. Συμβεβλημένο με ΕΟΠΥΥ.">
+<meta name="theme-color" content="#26587d">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --sky:#58b2d7;
+  --sky-soft:#8fcde4;
+  --navy:#26587d;
+  --navy-deep:#1a4060;
+  --ink:#15293a;
+  --paper:#f4f8fb;
+  --paper-2:#e9f2f7;
+  --white:#ffffff;
+  --line:rgba(38,88,125,.14);
+  --shadow:0 30px 80px -30px rgba(26,64,96,.35);
+  --display:'Sora',sans-serif;
+  --body:'Manrope',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--body);
+  color:var(--ink);
+  background:var(--paper);
+  overflow-x:hidden;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+::selection{background:var(--sky);color:#fff}
+
+/* ===== PRELOADER ===== */
+#preloader{
+  position:fixed;inset:0;z-index:9999;
+  background:var(--navy-deep);
+  display:flex;align-items:center;justify-content:center;
+  transition:opacity .8s ease,visibility .8s ease;
+}
+#preloader.done{opacity:0;visibility:hidden}
+.pulse-loader{position:relative;width:90px;height:90px}
+.pulse-loader span{
+  position:absolute;inset:0;border:2px solid var(--sky);border-radius:50%;
+  animation:pulseRing 1.8s cubic-bezier(.4,0,.2,1) infinite;
+}
+.pulse-loader span:nth-child(2){animation-delay:.6s}
+.pulse-loader span:nth-child(3){animation-delay:1.2s}
+@keyframes pulseRing{0%{transform:scale(.3);opacity:1}100%{transform:scale(1.1);opacity:0}}
+.pulse-core{position:absolute;top:50%;left:50%;width:14px;height:14px;background:var(--sky-soft);border-radius:50%;transform:translate(-50%,-50%);box-shadow:0 0 25px var(--sky)}
+
+/* ===== NAV ===== */
+header{
+  position:fixed;top:0;left:0;right:0;z-index:1000;
+  padding:22px clamp(18px,5vw,64px);
+  display:flex;align-items:center;justify-content:space-between;
+  transition:padding .4s ease,background .4s ease,box-shadow .4s ease;
+}
+header.scrolled{
+  padding:12px clamp(18px,5vw,64px);
+  background:rgba(244,248,251,.82);
+  backdrop-filter:blur(18px) saturate(160%);
+  box-shadow:0 1px 0 var(--line);
+}
+.brand{display:flex;align-items:center;gap:13px;font-family:var(--display);font-weight:700;color:var(--navy);font-size:clamp(15px,2vw,18px);letter-spacing:-.01em}
+.brand img{width:46px;height:46px;border-radius:14px;object-fit:cover;box-shadow:0 8px 22px -8px rgba(38,88,125,.5)}
+.brand .b-sub{display:block !important;font-family:var(--body);font-weight:500;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--sky);margin-top:1px}
+nav.desktop{display:flex;align-items:center;gap:clamp(14px,2.4vw,32px)}
+nav.desktop a{font-size:14px;font-weight:600;color:var(--ink);position:relative;padding:4px 0;transition:color .25s}
+nav.desktop a::after{content:"";position:absolute;left:0;bottom:-2px;width:0;height:2px;background:var(--sky);transition:width .3s ease}
+nav.desktop a:hover{color:var(--navy)}
+nav.desktop a:hover::after{width:100%}
+.lang-switch{display:flex;gap:4px;align-items:center;background:rgba(255,255,255,.7);border:1px solid var(--line);border-radius:30px;padding:4px}
+.lang-switch button{background:none;border:none;cursor:pointer;font-size:16px;line-height:1;padding:5px 7px;border-radius:30px;opacity:.42;transition:opacity .25s,background .25s;filter:saturate(.7)}
+.lang-switch button.active{opacity:1;background:var(--white);box-shadow:0 4px 12px -5px rgba(38,88,125,.4);filter:saturate(1)}
+.nav-cta{background:var(--navy);color:#fff !important;padding:11px 22px;border-radius:30px;font-size:14px;font-weight:600;box-shadow:0 12px 26px -12px rgba(38,88,125,.7);transition:transform .25s,box-shadow .25s}
+.nav-cta::after{display:none}
+.nav-cta:hover{transform:translateY(-2px);box-shadow:0 18px 34px -12px rgba(38,88,125,.8)}
+.burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px;z-index:1100}
+.burger span{width:26px;height:2.5px;background:var(--navy);border-radius:2px;transition:.3s}
+
+/* mobile menu */
+.mobile-menu{position:fixed;inset:0;z-index:1050;background:linear-gradient(160deg,var(--navy-deep),var(--navy));display:flex;flex-direction:column;align-items:center;justify-content:center;gap:26px;transform:translateY(-100%);transition:transform .55s cubic-bezier(.7,0,.2,1);opacity:0}
+.mobile-menu.open{transform:translateY(0);opacity:1}
+.mobile-menu a{color:#fff;font-family:var(--display);font-size:26px;font-weight:600;opacity:0;transform:translateY(20px)}
+.mobile-menu.open a{animation:menuIn .5s forwards}
+.mobile-menu.open a:nth-child(1){animation-delay:.15s}
+.mobile-menu.open a:nth-child(2){animation-delay:.22s}
+.mobile-menu.open a:nth-child(3){animation-delay:.29s}
+.mobile-menu.open a:nth-child(4){animation-delay:.36s}
+.mobile-menu.open a:nth-child(5){animation-delay:.43s}
+.mobile-menu.open a:nth-child(6){animation-delay:.5s}
+@keyframes menuIn{to{opacity:1;transform:translateY(0)}}
+.mobile-close{position:absolute;top:24px;right:24px;width:48px;height:48px;border-radius:50%;border:1.5px solid rgba(255,255,255,.35);background:rgba(255,255,255,.06);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:transform .3s,background .3s}
+.mobile-close:hover{transform:rotate(90deg);background:rgba(255,255,255,.16)}
+.mobile-close::before,.mobile-close::after{content:"";position:absolute;width:20px;height:2px;background:#fff;border-radius:2px}
+.mobile-close::before{transform:rotate(45deg)}
+.mobile-close::after{transform:rotate(-45deg)}
+.mobile-lang{position:absolute;bottom:40px;display:flex;gap:10px}
+.mobile-lang button{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.25);color:#fff;font-size:20px;padding:8px 14px;border-radius:30px;cursor:pointer;opacity:.5}
+.mobile-lang button.active{opacity:1;background:rgba(255,255,255,.2)}
+
+/* ===== HERO ===== */
+.hero{position:relative;min-height:100svh;display:flex;align-items:center;overflow:hidden;background:var(--navy-deep)}
+.hero-bg{position:absolute;inset:0;z-index:0}
+.hero-bg img{width:100%;height:100%;object-fit:cover;transform:scale(1.12);animation:heroZoom 16s ease-out forwards;filter:saturate(1.05)}
+@keyframes heroZoom{to{transform:scale(1)}}
+.hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,rgba(20,40,60,.94) 0%,rgba(26,64,96,.82) 38%,rgba(38,88,125,.5) 70%,rgba(88,178,215,.22) 100%)}
+.hero-inner{position:relative;z-index:2;padding:120px clamp(18px,5vw,64px) 60px;max-width:1100px}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:10px;color:var(--sky-soft);font-size:13px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;margin-bottom:26px;opacity:0;animation:fadeUp .9s .4s forwards}
+.hero-eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--sky);box-shadow:0 0 12px var(--sky);animation:blink 2.4s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.35}}
+.hero h1{font-family:var(--display);color:#fff;font-weight:800;font-size:clamp(2.3rem,6vw,4.6rem);line-height:1.04;letter-spacing:-.025em;margin-bottom:24px}
+.hero h1 .word{display:inline-block;opacity:0;transform:translateY(30px) rotateX(40deg);animation:wordIn .8s forwards}
+.hero h1 .accent{background:linear-gradient(120deg,var(--sky),var(--sky-soft));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+@keyframes wordIn{to{opacity:1;transform:translateY(0) rotateX(0)}}
+.hero p.lead{color:rgba(255,255,255,.86);font-size:clamp(1rem,1.7vw,1.22rem);max-width:560px;margin-bottom:38px;opacity:0;animation:fadeUp .9s 1.1s forwards}
+.hero-actions{display:flex;flex-wrap:wrap;gap:14px;opacity:0;animation:fadeUp .9s 1.3s forwards}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:15px 30px;border-radius:36px;font-weight:600;font-size:15px;font-family:var(--body);cursor:pointer;border:none;transition:transform .3s,box-shadow .3s,background .3s}
+.btn-primary{background:var(--sky);color:var(--navy-deep);box-shadow:0 16px 38px -14px rgba(88,178,215,.85)}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 24px 48px -14px rgba(88,178,215,.95)}
+.btn-ghost{background:rgba(255,255,255,.08);color:#fff;border:1.5px solid rgba(255,255,255,.3);backdrop-filter:blur(6px)}
+.btn-ghost:hover{background:rgba(255,255,255,.18);transform:translateY(-3px)}
+.btn svg{width:18px;height:18px}
+.hero-stats{position:absolute;bottom:0;left:0;right:0;z-index:2;display:flex;flex-wrap:wrap;border-top:1px solid rgba(255,255,255,.14);background:rgba(20,40,60,.35);backdrop-filter:blur(8px)}
+.hero-stats .stat{flex:1;min-width:140px;padding:22px clamp(18px,4vw,40px);border-right:1px solid rgba(255,255,255,.1);opacity:0;animation:fadeUp .8s forwards}
+.hero-stats .stat:nth-child(1){animation-delay:1.5s}
+.hero-stats .stat:nth-child(2){animation-delay:1.65s}
+.hero-stats .stat:nth-child(3){animation-delay:1.8s}
+.hero-stats .stat:last-child{border-right:none}
+.hero-stats .num{font-family:var(--display);font-weight:700;font-size:clamp(1.5rem,3vw,2.1rem);color:#fff;line-height:1}
+.hero-stats .num span{color:var(--sky)}
+.hero-stats .lbl{color:rgba(255,255,255,.7);font-size:12.5px;font-weight:500;margin-top:6px;letter-spacing:.02em}
+.scroll-hint{position:absolute;bottom:118px;right:clamp(18px,5vw,64px);z-index:3;writing-mode:vertical-rl;color:rgba(255,255,255,.6);font-size:11px;letter-spacing:.3em;text-transform:uppercase;display:flex;align-items:center;gap:14px}
+.scroll-hint .ln{width:1px;height:50px;background:linear-gradient(rgba(255,255,255,.6),transparent);animation:scrollLn 2s infinite}
+@keyframes scrollLn{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+
+/* ===== SECTION SHELL ===== */
+section{position:relative}
+.wrap{max-width:1240px;margin:0 auto;padding:clamp(70px,9vw,130px) clamp(18px,5vw,64px)}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;color:var(--navy);font-size:12.5px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;margin-bottom:18px}
+.eyebrow .bar{width:30px;height:2px;background:var(--sky)}
+.sec-title{font-family:var(--display);font-weight:700;font-size:clamp(1.9rem,4.2vw,3.1rem);line-height:1.08;letter-spacing:-.025em;color:var(--ink);max-width:760px}
+.sec-title em{font-style:normal;color:var(--navy);position:relative}
+.sec-title em::after{content:"";position:absolute;left:0;bottom:6px;width:100%;height:10px;background:var(--sky-soft);opacity:.4;z-index:-1;border-radius:4px}
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(38px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)}
+.reveal.in{opacity:1;transform:none}
+.reveal.d1{transition-delay:.1s}.reveal.d2{transition-delay:.2s}.reveal.d3{transition-delay:.3s}.reveal.d4{transition-delay:.4s}
+
+/* ===== ABOUT ===== */
+.about{background:var(--white)}
+.about-grid{display:grid;grid-template-columns:0.85fr 1.15fr;gap:clamp(36px,6vw,80px);align-items:center;margin-top:50px}
+.about-photo{position:relative}
+.about-photo .frame{position:relative;border-radius:24px;overflow:hidden;box-shadow:var(--shadow);max-width:380px}
+.about-photo .frame img{width:100%;aspect-ratio:3/4;object-fit:cover;transition:transform 1.2s cubic-bezier(.16,1,.3,1)}
+.about-photo .frame:hover img{transform:scale(1.06)}
+.about-photo .ring{position:absolute;top:-26px;left:-26px;width:120px;height:120px;border:2px solid var(--sky);border-radius:50%;opacity:.5;z-index:-1}
+.about-photo .badge{position:absolute;bottom:-22px;right:-10px;background:var(--navy);color:#fff;padding:18px 22px;border-radius:18px;box-shadow:0 20px 44px -18px rgba(26,64,96,.7);text-align:center}
+.about-photo .badge .y{font-family:var(--display);font-weight:800;font-size:2rem;line-height:1;color:var(--sky)}
+.about-photo .badge .t{font-size:11px;letter-spacing:.14em;text-transform:uppercase;margin-top:5px;opacity:.85}
+.about-text h2{font-family:var(--display);font-weight:700;font-size:clamp(1.6rem,3.4vw,2.5rem);line-height:1.12;letter-spacing:-.02em;margin-bottom:22px}
+.about-text p{color:#3c5468;font-size:1.04rem;margin-bottom:18px}
+.method-tags{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+.method-tags span{padding:9px 17px;border:1px solid var(--line);border-radius:30px;font-size:13px;font-weight:600;color:var(--navy);background:var(--paper);transition:transform .25s,background .25s,color .25s}
+.method-tags span:hover{transform:translateY(-3px);background:var(--navy);color:#fff;border-color:var(--navy)}
+
+/* ===== TECH STRIP ===== */
+.techstrip{background:var(--navy-deep);overflow:hidden;padding:26px 0}
+.marquee{display:flex;gap:60px;white-space:nowrap;animation:scrollX 26s linear infinite;width:max-content}
+.marquee span{font-family:var(--display);font-weight:600;font-size:clamp(1.1rem,2.4vw,1.6rem);color:rgba(255,255,255,.28);letter-spacing:.01em;display:flex;align-items:center;gap:60px}
+.marquee span::before{content:"✦";color:var(--sky);font-size:.7em}
+@keyframes scrollX{to{transform:translateX(-50%)}}
+
+/* ===== SERVICES ===== */
+.services{background:var(--paper)}
+.svc-list{margin-top:54px;border-top:1px solid var(--line)}
+.svc{display:grid;grid-template-columns:60px 1fr auto;gap:clamp(16px,3vw,40px);align-items:start;padding:clamp(28px,4vw,46px) 0;border-bottom:1px solid var(--line);cursor:pointer;transition:padding-left .4s ease}
+.svc:hover{padding-left:14px}
+.svc .idx{font-family:var(--display);font-weight:700;font-size:1.1rem;color:var(--sky)}
+.svc .svc-main h3{font-family:var(--display);font-weight:700;font-size:clamp(1.25rem,2.6vw,1.75rem);letter-spacing:-.02em;color:var(--ink);margin-bottom:6px;transition:color .3s;line-height:1.15}
+.svc:hover .svc-main h3{color:var(--navy)}
+.svc .pills{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:14px}
+.svc .pills b{font-weight:600;font-size:11.5px;color:var(--navy);background:var(--paper-2);border-radius:20px;padding:4px 11px;letter-spacing:.01em}
+.svc .svc-main p{color:#476079;font-size:1rem;max-width:640px}
+.svc .arrow{width:48px;height:48px;border-radius:50%;border:1.5px solid var(--line);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:.35s;align-self:center}
+.svc .arrow svg{width:20px;height:20px;stroke:var(--navy);transition:.35s}
+.svc:hover .arrow{background:var(--navy);border-color:var(--navy);transform:rotate(45deg)}
+.svc:hover .arrow svg{stroke:#fff}
+
+/* ===== PHILOSOPHY ===== */
+.philo{background:linear-gradient(165deg,var(--navy-deep),var(--navy));color:#fff;position:relative;overflow:hidden}
+.philo::before{content:"";position:absolute;top:-30%;right:-10%;width:600px;height:600px;background:radial-gradient(circle,rgba(88,178,215,.22),transparent 70%);border-radius:50%}
+.philo .wrap{position:relative;z-index:2}
+.philo .eyebrow{color:var(--sky-soft)}
+.philo .sec-title{color:#fff;max-width:840px}
+.philo .sec-title em{color:var(--sky-soft)}
+.philo .sec-title em::after{background:var(--sky);opacity:.3}
+.philo-intro{color:rgba(255,255,255,.82);font-size:1.1rem;max-width:680px;margin:24px 0 56px}
+.philo-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.pcard{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:22px;padding:34px 30px;transition:transform .4s cubic-bezier(.16,1,.3,1),background .4s;position:relative;overflow:hidden}
+.pcard::after{content:"";position:absolute;inset:0;background:linear-gradient(160deg,rgba(88,178,215,.16),transparent 60%);opacity:0;transition:opacity .4s}
+.pcard:hover{transform:translateY(-8px);background:rgba(255,255,255,.08)}
+.pcard:hover::after{opacity:1}
+.pcard .ic{width:54px;height:54px;border-radius:16px;background:rgba(88,178,215,.18);display:flex;align-items:center;justify-content:center;margin-bottom:22px}
+.pcard .ic svg{width:26px;height:26px;stroke:var(--sky-soft)}
+.pcard h4{font-family:var(--display);font-weight:600;font-size:1.3rem;margin-bottom:12px;letter-spacing:-.01em}
+.pcard p{color:rgba(255,255,255,.74);font-size:.97rem}
+.philo-quote{margin-top:56px;padding:34px 0 0;border-top:1px solid rgba(255,255,255,.16);font-family:var(--display);font-weight:300;font-size:clamp(1.2rem,2.8vw,1.9rem);line-height:1.4;letter-spacing:-.01em;max-width:880px}
+.philo-quote em{color:var(--sky-soft);font-style:normal;font-weight:500}
+
+/* ===== SPACE GALLERY ===== */
+.space{background:var(--white)}
+.gallery{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:200px;gap:16px;margin-top:50px}
+.gitem{position:relative;overflow:hidden;border-radius:18px;cursor:pointer;box-shadow:0 18px 40px -28px rgba(26,64,96,.5)}
+.gitem img{width:100%;height:100%;object-fit:cover;transition:transform 1s cubic-bezier(.16,1,.3,1)}
+.gitem::after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 50%,rgba(20,40,60,.55));opacity:0;transition:opacity .4s}
+.gitem .zoom{position:absolute;top:14px;right:14px;width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.92);display:flex;align-items:center;justify-content:center;opacity:0;transform:scale(.6);transition:.4s}
+.gitem .zoom svg{width:18px;height:18px;stroke:var(--navy)}
+.gitem:hover img{transform:scale(1.1)}
+.gitem:hover::after{opacity:1}
+.gitem:hover .zoom{opacity:1;transform:scale(1)}
+.g-tall{grid-row:span 2}
+.g-wide{grid-column:span 2}
+
+/* ===== REVIEWS ===== */
+.reviews{background:var(--paper)}
+.rev-head{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:24px}
+.rev-stars{display:flex;align-items:center;gap:8px;margin-top:18px}
+.rev-stars .s{color:#f5a623;font-size:1.3rem;letter-spacing:2px}
+.rev-stars b{font-family:var(--display);font-weight:700;color:var(--navy);font-size:1.05rem}
+.rev-grid{column-count:3;column-gap:22px;margin-top:50px}
+.rcard{break-inside:avoid;background:var(--white);border:1px solid var(--line);border-radius:20px;padding:28px;margin-bottom:22px;box-shadow:0 18px 44px -34px rgba(26,64,96,.5);transition:transform .4s,box-shadow .4s}
+.rcard:hover{transform:translateY(-6px);box-shadow:0 26px 54px -30px rgba(26,64,96,.55)}
+.rcard .top{display:flex;align-items:center;gap:13px;margin-bottom:16px}
+.rcard .av{width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,var(--sky),var(--navy));color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--display);font-weight:700;font-size:1.05rem;flex-shrink:0}
+.rcard .nm{font-weight:700;color:var(--ink);font-size:.97rem;line-height:1.2}
+.rcard .st{color:#f5a623;font-size:.85rem;letter-spacing:1px;margin-top:3px}
+.rcard p{color:#476079;font-size:.96rem;line-height:1.6}
+.rcard .gq{font-family:var(--display);font-size:2.4rem;color:var(--sky-soft);line-height:.6;opacity:.5;margin-bottom:6px}
+.rev-cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:14px}
+.btn-google{background:var(--white);color:var(--navy);border:1.5px solid var(--line);box-shadow:0 14px 34px -24px rgba(26,64,96,.5)}
+.btn-google:hover{transform:translateY(-3px);border-color:var(--sky)}
+.btn-rate{background:var(--navy);color:#fff;box-shadow:0 16px 38px -16px rgba(38,88,125,.7)}
+.btn-rate:hover{transform:translateY(-3px)}
+
+/* ===== CONTACT ===== */
+.contact{background:var(--white)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,5vw,64px);margin-top:50px}
+.info-block{margin-bottom:30px}
+.info-block .lab{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--sky);font-weight:700;margin-bottom:10px;display:flex;align-items:center;gap:9px}
+.info-block .lab svg{width:17px;height:17px;stroke:var(--navy)}
+.info-block .val{font-family:var(--display);font-weight:600;font-size:1.15rem;color:var(--ink);line-height:1.4}
+.info-block .val a{transition:color .25s}
+.info-block .val a:hover{color:var(--navy)}
+.info-block .sub{color:#5a7389;font-size:.95rem;margin-top:4px}
+.hours-grid{display:flex;gap:14px;margin-top:8px}
+.hours-grid .h{flex:1;background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:18px 20px}
+.hours-grid .h .hl{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--sky);font-weight:700}
+.hours-grid .h .ht{font-family:var(--display);font-weight:700;font-size:1.25rem;color:var(--navy);margin-top:6px}
+.eopyy-badge{display:inline-flex;align-items:center;gap:11px;background:var(--paper-2);border:1px solid var(--line);border-radius:30px;padding:11px 20px;margin-top:8px}
+.eopyy-badge .dot{width:9px;height:9px;border-radius:50%;background:#3ec98a;box-shadow:0 0 10px #3ec98a}
+.eopyy-badge b{font-weight:600;color:var(--navy);font-size:.95rem}
+.map-frame{border-radius:24px;overflow:hidden;box-shadow:var(--shadow);min-height:420px;border:1px solid var(--line)}
+.map-frame iframe{width:100%;height:100%;min-height:420px;border:none;filter:grayscale(.2) contrast(1.05)}
+
+/* ===== FOOTER ===== */
+footer{background:var(--navy-deep);color:#fff;padding:clamp(50px,7vw,80px) clamp(18px,5vw,64px) 30px}
+.foot-top{display:flex;justify-content:space-between;flex-wrap:wrap;gap:36px;max-width:1240px;margin:0 auto;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,.13)}
+.foot-brand{max-width:340px}
+.foot-brand .fb{display:flex;align-items:center;gap:13px;margin-bottom:18px}
+.foot-brand .fb img{width:50px;height:50px;border-radius:14px}
+.foot-brand .fb b{font-family:var(--display);font-weight:700;font-size:1.15rem}
+.foot-brand p{color:rgba(255,255,255,.65);font-size:.95rem}
+.foot-cols{display:flex;gap:clamp(40px,7vw,90px);flex-wrap:wrap}
+.foot-col h5{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--sky-soft);margin-bottom:16px;font-weight:700}
+.foot-col a,.foot-col p{display:block;color:rgba(255,255,255,.72);font-size:.95rem;margin-bottom:10px;transition:color .25s}
+.foot-col a:hover{color:#fff}
+.foot-bottom{max-width:1240px;margin:0 auto;padding-top:26px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;align-items:center;color:rgba(255,255,255,.55);font-size:.85rem}
+.foot-bottom a{color:var(--sky-soft);font-weight:600}
+.foot-bottom a:hover{color:#fff}
+
+/* ===== LIGHTBOX ===== */
+.lightbox{position:fixed;inset:0;z-index:5000;background:rgba(15,30,45,.94);backdrop-filter:blur(10px);display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;transition:opacity .4s,visibility .4s;padding:30px}
+.lightbox.open{opacity:1;visibility:visible}
+.lightbox img{max-width:92vw;max-height:88vh;border-radius:14px;box-shadow:0 40px 120px -30px rgba(0,0,0,.7);transform:scale(.92);transition:transform .45s cubic-bezier(.16,1,.3,1)}
+.lightbox.open img{transform:scale(1)}
+.lb-close{position:absolute;top:24px;right:28px;width:52px;height:52px;border-radius:50%;background:rgba(255,255,255,.1);border:1.5px solid rgba(255,255,255,.3);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:.3s}
+.lb-close:hover{transform:rotate(90deg);background:rgba(255,255,255,.2)}
+.lb-close::before,.lb-close::after{content:"";position:absolute;width:22px;height:2px;background:#fff;border-radius:2px}
+.lb-close::before{transform:rotate(45deg)}.lb-close::after{transform:rotate(-45deg)}
+
+/* float CTA */
+.float-call{position:fixed;bottom:24px;right:24px;z-index:900;width:60px;height:60px;border-radius:50%;background:var(--navy);box-shadow:0 18px 38px -12px rgba(38,88,125,.8);display:flex;align-items:center;justify-content:center;opacity:0;transform:scale(0);transition:.4s}
+.float-call.show{opacity:1;transform:scale(1)}
+.float-call:hover{transform:scale(1.1)}
+.float-call svg{width:26px;height:26px;stroke:#fff}
+.float-call::after{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid var(--sky);animation:pulseRing 2s infinite}
+
+[lang-en]{display:none}
+body.en [lang-el]{display:none}
+body.en [lang-en]{display:inline}
+body.en [lang-en].block{display:block}
+
+@media(max-width:1024px){
+  .about-grid{grid-template-columns:1fr;gap:60px}
+  .about-photo .frame{max-width:340px;margin:0 auto}
+  .philo-cards{grid-template-columns:1fr}
+  .rev-grid{column-count:2}
+  .gallery{grid-template-columns:repeat(2,1fr);grid-auto-rows:180px}
+  .contact-grid{grid-template-columns:1fr}
+}
+@media(max-width:760px){
+  nav.desktop{display:none}
+  .nav-cta{display:none}
+  .burger{display:flex}
+  header .lang-switch{display:none}
+  .hero-stats{flex-direction:row}
+  .hero-stats .stat{min-width:0;padding:16px 14px}
+  .hero-stats .num{font-size:1.4rem}
+  .scroll-hint{display:none}
+  .svc{grid-template-columns:40px 1fr;gap:14px}
+  .svc .arrow{display:none}
+  .rev-grid{column-count:1}
+  .hours-grid{flex-direction:column}
+  .gallery{grid-template-columns:1fr;grid-auto-rows:220px}
+  .g-wide{grid-column:span 1}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none !important;transition:none !important}
+  .reveal{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<!-- PRELOADER -->
+<div id="preloader">
+  <div class="pulse-loader"><span></span><span></span><span></span><div class="pulse-core"></div></div>
+</div>
+
+<!-- HEADER -->
+<header id="header">
+  <a href="#top" class="brand">
+    <img src="https://raw.githubusercontent.com/agelmet/TSEKOURAKIS/e9b10bcda10450bd187ea1480c31a4fb06074b8d/logosots.jpg" alt="Λογότυπο Τσεκουράκης Φυσικοθεραπεία">
+    <span>Π. Τσεκουράκης
+      <span class="b-sub" lang-el>Φυσικοθεραπεία</span>
+      <span class="b-sub block" lang-en>Physiotherapy</span>
+    </span>
+  </a>
+  <nav class="desktop">
+    <a href="#about"><span lang-el>Ο Ιατρός</span><span lang-en>About</span></a>
+    <a href="#services"><span lang-el>Υπηρεσίες</span><span lang-en>Services</span></a>
+    <a href="#philosophy"><span lang-el>Φιλοσοφία</span><span lang-en>Philosophy</span></a>
+    <a href="#space"><span lang-el>Ο Χώρος</span><span lang-en>The Space</span></a>
+    <a href="#reviews"><span lang-el>Κριτικές</span><span lang-en>Reviews</span></a>
+    <div class="lang-switch">
+      <button data-lang="el" class="active" aria-label="Ελληνικά">🇬🇷</button>
+      <button data-lang="en" aria-label="English">🇬🇧</button>
+    </div>
+    <a href="#contact" class="nav-cta"><span lang-el>Ραντεβού</span><span lang-en>Book Now</span></a>
+  </nav>
+  <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+</header>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" id="mobileClose" aria-label="Close"></button>
+  <a href="#about"><span lang-el>Ο Ιατρός</span><span lang-en>About</span></a>
+  <a href="#services"><span lang-el>Υπηρεσίες</span><span lang-en>Services</span></a>
+  <a href="#philosophy"><span lang-el>Φιλοσοφία</span><span lang-en>Philosophy</span></a>
+  <a href="#space"><span lang-el>Ο Χώρος</span><span lang-en>The Space</span></a>
+  <a href="#reviews"><span lang-el>Κριτικές</span><span lang-en>Reviews</span></a>
+  <a href="#contact"><span lang-el>Ραντεβού</span><span lang-en>Book Now</span></a>
+  <div class="mobile-lang">
+    <button data-lang="el" class="active">🇬🇷 EL</button>
+    <button data-lang="en">🇬🇧 EN</button>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-bg">
+    <img src="https://raw.githubusercontent.com/agelmet/TSEKOURAKIS/e9b10bcda10450bd187ea1480c31a4fb06074b8d/unnamed-123.jpg" alt="Χώρος φυσικοθεραπείας Πυλαία">
+  </div>
+  <div class="hero-inner">
+    <span class="hero-eyebrow"><span class="dot"></span><span lang-el>Πυλαία, Θεσσαλονίκη · Συμβεβλημένο με ΕΟΠΥΥ</span><span lang-en>Pylaia, Thessaloniki · ΕΟΠΥΥ Affiliated</span></span>
+    <h1>
+      <span lang-el>
+        <span class="word" style="animation-delay:.5s">Τριάντα</span> <span class="word accent" style="animation-delay:.62s">χρόνια</span><br>
+        <span class="word" style="animation-delay:.74s">αποκατάστασης</span><br>
+        <span class="word" style="animation-delay:.86s">που</span> <span class="word accent" style="animation-delay:.98s">διαρκεί.</span>
+      </span>
+      <span lang-en>
+        <span class="word" style="animation-delay:.5s">Thirty</span> <span class="word accent" style="animation-delay:.62s">years</span><br>
+        <span class="word" style="animation-delay:.74s">of</span> <span class="word" style="animation-delay:.86s">recovery</span><br>
+        <span class="word accent" style="animation-delay:.98s">that lasts.</span>
+      </span>
+    </h1>
+    <p class="lead" lang-el>Σύγχρονη φυσικοθεραπεία στην καρδιά της Πυλαίας. Τεχνολογία αιχμής, εξειδικευμένες χειροθεραπευτικές μέθοδοι και θεραπευτική άσκηση — για μόνιμη ανακούφιση, όχι προσωρινή.</p>
+    <p class="lead" lang-en>Modern physiotherapy in the heart of Pylaia. Cutting-edge technology, certified manual methods and therapeutic exercise — built for lasting relief, not a temporary fix.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn btn-primary">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <span lang-el>Κλείστε Ραντεβού</span><span lang-en>Book Appointment</span>
+      </a>
+      <a href="#services" class="btn btn-ghost"><span lang-el>Οι Υπηρεσίες μας</span><span lang-en>Our Services</span></a>
+    </div>
+  </div>
+  <div class="scroll-hint"><span lang-el>Κυλήστε</span><span lang-en>Scroll</span><span class="ln"></span></div>
+  <div class="hero-stats">
+    <div class="stat"><div class="num"><span>30+</span></div><div class="lbl" lang-el>Χρόνια Κλινικής Εμπειρίας</div><div class="lbl" lang-en>Years Clinical Experience</div></div>
+    <div class="stat"><div class="num">4 <span>Μέθοδοι</span></div><div class="lbl" lang-el>McKenzie · Cyriax · Bobath · Manual</div><div class="lbl" lang-en>McKenzie · Cyriax · Bobath · Manual</div></div>
+    <div class="stat"><div class="num"><span>ΕΟΠΥΥ</span></div><div class="lbl" lang-el>Συμβεβλημένο Εργαστήριο</div><div class="lbl" lang-en>Affiliated Practice</div></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="wrap">
+    <div class="reveal"><span class="eyebrow"><span class="bar"></span><span lang-el>Ο Φυσικοθεραπευτής</span><span lang-en>The Physiotherapist</span></span></div>
+    <div class="about-grid">
+      <div class="about-photo reveal">
+        <div class="ring"></div>
+        <div class="frame lb-trigger" data-src="https://raw.githubusercontent.com/agelmet/TSEKOURAKIS/e9b10bcda10450bd187ea1480c31a4fb06074b8d/IMG_4486.JPG">
+          <img src="https://raw.githubusercontent.com/agelmet/TSEKOURAKIS/e9b10bcda10450bd187ea1480c31a4fb06074b8d/IMG_4486.JPG" alt="Πολυχρόνης Τσεκουράκης Φυσικοθεραπευτής">
+        </div>
+        <div class="badge"><div class="y">30</div><div class="t" lang-el>Χρόνια</div><div class="t" lang-en>Years</div></div>
+      </div>
+      <div class="about-text reveal d1">
+        <h2 lang-el>Πολυχρόνης Τσεκουράκης</h2>
+        <h2 lang-en>Polychronis Tsekourakis</h2>
+        <p lang-el>Εξειδικευμένος φυσικοθεραπευτής με τριάντα χρόνια ενεργής κλινικής παρουσίας, διατηρεί ένα υπερσύγχρονο, συμβεβλημένο με τον ΕΟΠΥΥ εργαστήριο στο κέντρο της Πυλαίας, εξυπηρετώντας ολόκληρη την ανατολική Θεσσαλονίκη — Πανόραμα, Καλαμαριά, Τριανδρία και Κέντρο.</p>
+        <p lang-el>Μετά τις σπουδές του στη Θεσσαλονίκη, αφιερώθηκε στη συνεχή μετεκπαίδευση, αποκτώντας πιστοποιημένες ειδικότητες στις πλέον αναγνωρισμένες μεθόδους αποκατάστασης παγκοσμίως: McKenzie, Cyriax, Bobath και Manual Therapy. Αυτό το υπόβαθρο του επιτρέπει να προσεγγίζει με ασφάλεια τόσο βαριά μυοσκελετικά όσο και σύνθετα νευρολογικά περιστατικά.</p>
+        <p lang-el>Το κέντρο διαθέτει εξοπλισμό τελευταίας γενιάς — Μαγνητικό Διεγέρτη, TECAR, Κρουστικό Υπέρηχο και Laser. Όμως η φιλοσοφία του δεν στηρίζεται μόνο στα μηχανήματα: με έμφαση στη θεραπευτική άσκηση και μεθόδους όπως το Pilates Reformer, στοχεύει στη μόνιμη αποκατάσταση και την ευεξία του ασθενούς.</p>
+        <p lang-en>A specialist physiotherapist with thirty years of active clinical practice, running a state-of-the-art, ΕΟΠΥΥ-affiliated studio in central Pylaia and serving all of eastern Thessaloniki — Panorama, Kalamaria, Triandria and the city centre.</p>
+        <p lang-en>After studying in Thessaloniki, he devoted himself to continuous training, earning certifications in the world's most respected rehabilitation methods: McKenzie, Cyriax, Bobath and Manual Therapy — allowing him to treat both heavy musculoskeletal and complex neurological cases with confidence.</p>
+        <p lang-en>The centre features the latest equipment — Magnetic Stimulator, TECAR, Shockwave and Laser. Yet his philosophy goes beyond machines: with a focus on therapeutic exercise and methods like the Pilates Reformer, he aims for lasting recovery and genuine wellbeing.</p>
+        <div class="method-tags">
+          <span>McKenzie</span><span>Cyriax</span><span>Bobath</span><span>Manual Therapy</span><span>Pilates Reformer</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TECH MARQUEE -->
+<div class="techstrip">
+  <div class="marquee">
+    <span>Μαγνητικός Διεγέρτης SIS</span><span>TECAR</span><span>Κρουστικός Υπέρηχος</span><span>Laser High-Power</span><span>Vacuum Therapy</span><span>Pilates Reformer</span><span>Power Plate</span>
+    <span>Μαγνητικός Διεγέρτης SIS</span><span>TECAR</span><span>Κρουστικός Υπέρηχος</span><span>Laser High-Power</span><span>Vacuum Therapy</span><span>Pilates Reformer</span><span>Power Plate</span>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="wrap">
+    <div class="reveal"><span class="eyebrow"><span class="bar"></span><span lang-el>Υπηρεσίες</span><span lang-en>Services</span></span></div>
+    <h2 class="sec-title reveal d1">
+      <span lang-el>Στοχευμένη αποκατάσταση για <em>κάθε περιστατικό.</em></span>
+      <span lang-en>Targeted rehabilitation for <em>every case.</em></span>
+    </h2>
+    <div class="svc-list">
+
+      <div class="svc reveal lb-link" data-target="#contact">
+        <div class="idx">01</div>
+        <div class="svc-main">
+          <h3 lang-el>Σπονδυλική Στήλη & Νευρολογική Αποκατάσταση</h3>
+          <h3 lang-en>Spine & Neurological Rehabilitation</h3>
+          <div class="pills"><b>McKenzie</b><b>Bobath</b><b lang-el>Δισκοκήλη</b><b lang-en>Disc Herniation</b><b lang-el>Αυχενικό</b><b lang-en>Cervical</b><b lang-el>Ισχιαλγία</b><b lang-en>Sciatica</b></div>
+          <p lang-el>Αντιμετωπίζουμε ριζικά τις κήλες μεσοσπονδύλιου δίσκου και την ισχιαλγία, συνδυάζοντας το πρωτόκολλο McKenzie με Laser τελευταίας τεχνολογίας για άμεση αποσυμπίεση. Με τη μέθοδο Bobath αναλαμβάνουμε τη λειτουργική αποκατάσταση νευρολογικών περιστατικών, ενισχύοντας την αυτονομία σας.</p>
+          <p lang-en>We address disc herniation and sciatica at the root, combining the McKenzie protocol with high-end Laser for immediate decompression. Through the Bobath method we deliver functional rehabilitation of neurological cases, restoring your independence.</p>
+        </div>
+        <a href="#contact" class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7V16"/></svg></a>
+      </div>
+
+      <div class="svc reveal d1">
+        <div class="idx">02</div>
+        <div class="svc-main">
+          <h3 lang-el>High-Tech Θεραπείες & Χρόνιος Πόνος</h3>
+          <h3 lang-en>High-Tech Therapies & Chronic Pain</h3>
+          <div class="pills"><b lang-el>Μαγνητικός Διεγέρτης</b><b lang-en>Magnetic Stimulator</b><b>TECAR</b><b>Laser</b><b>Vacuum</b></div>
+          <p lang-el>Επενδύουμε στην αιχμή της τεχνολογίας για ταχύτερη επούλωση. Ο Μαγνητικός Διεγέρτης προσφέρει θεαματικά αποτελέσματα σε οστεοαρθρίτιδες, φλεγμονές και οστικά οιδήματα. Το TECAR είναι ιδανικό για τενοντίτιδες και σύνδρομο καρπιαίου σωλήνα, ενώ τα Laser νέας γενιάς και το σύστημα Vacuum δίνουν άμεση λύση στους χρόνιους πόνους.</p>
+          <p lang-en>We invest in the leading edge of technology for faster healing. The Magnetic Stimulator delivers dramatic results for osteoarthritis, inflammation and bone oedema. TECAR is ideal for tendinitis and carpal tunnel syndrome, while next-generation Laser and the Vacuum system provide immediate relief for chronic pain.</p>
+        </div>
+        <a href="#contact" class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7V16"/></svg></a>
+      </div>
+
+      <div class="svc reveal d2">
+        <div class="idx">03</div>
+        <div class="svc-main">
+          <h3 lang-el>Αθλητικές Κακώσεις & Ορθοπεδική</h3>
+          <h3 lang-en>Sports Injuries & Orthopaedics</h3>
+          <div class="pills"><b lang-el>Κρουστικός Υπέρηχος</b><b lang-en>Shockwave</b><b>Manual Therapy</b><b lang-el>Επικονδυλίτιδα</b><b lang-en>Tennis Elbow</b><b lang-el>Παγωμένος Ώμος</b><b lang-en>Frozen Shoulder</b></div>
+          <p lang-el>Η επιστροφή στην καθημερινότητα και την άθληση πρέπει να είναι ασφαλής και γρήγορη. Ο Κρουστικός Υπέρηχος (Shockwave) είναι το απόλυτο όπλο για επίμονες παθήσεις: πελματιαία απονευρωσίτιδα, άκανθα πτέρνας, επικονδυλίτιδα, τροχαντηρίτιδα και παγωμένο ώμο — διαλύοντας τις επασβεστώσεις και ενεργοποιώντας την επούλωση.</p>
+          <p lang-en>Returning to daily life and sport must be safe and fast. Shockwave therapy is the ultimate tool for stubborn conditions: plantar fasciitis, heel spurs, tennis elbow, trochanteritis and frozen shoulder — breaking down calcifications and triggering healing.</p>
+        </div>
+        <a href="#contact" class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7V16"/></svg></a>
+      </div>
+
+      <div class="svc reveal d3">
+        <div class="idx">04</div>
+        <div class="svc-main">
+          <h3 lang-el>Θεραπευτική Άσκηση & Clinical Pilates</h3>
+          <h3 lang-en>Therapeutic Exercise & Clinical Pilates</h3>
+          <div class="pills"><b>Pilates Reformer</b><b lang-el>Πλατφόρμα Δόνησης</b><b lang-en>Vibration Platform</b><b>Power Plate</b><b lang-el>Θεραπευτική Γυμναστική</b><b lang-en>Therapeutic Training</b></div>
+          <p lang-el>Η παθητική θεραπεία ανακουφίζει — η κίνηση θεραπεύει. Δίνουμε τεράστια έμφαση στη σωστή μηχανική του σώματος μέσω θεραπευτικής άσκησης. Σε ειδικά διαμορφωμένο χώρο με αυθεντικό Pilates Reformer, προσφέρουμε εξειδικευμένη εκγύμναση που προστατεύει τις αρθρώσεις, ενδυναμώνει τον κορμό και χαρίζει απαράμιλλη ευεξία.</p>
+          <p lang-en>Passive therapy relieves — movement heals. We place enormous emphasis on correct body mechanics through therapeutic exercise. In a dedicated space with an authentic Pilates Reformer, we offer specialised training that protects the joints, strengthens the core and restores genuine wellbeing.</p>
+        </div>
+        <a href="#contact" class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7V16"/></svg></a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PHILOSOPHY -->
+<section class="philo" id="philosophy">
+  <div class="wrap">
+    <div class="reveal"><span class="eyebrow"><span class="bar"></span><span lang-el>Η Φιλοσοφία μου</span><span lang-en>My Philosophy</span></span></div>
+    <h2 class="sec-title reveal d1">
+      <span lang-el>30 χρόνια αφοσίωσης: η <em>τεχνολογία</em> συναντά την <em>κίνηση.</em></span>
+      <span lang-en>30 years of dedication: where <em>technology</em> meets <em>movement.</em></span>
+    </h2>
+    <p class="philo-intro reveal d2" lang-el>Όταν κλείνεις τρεις δεκαετίες σε ένα επάγγελμα, αναρωτιέσαι αν η καθημερινότητα έγινε ρουτίνα. Νιώθω ακριβώς το αντίθετο — θεωρώ τον εαυτό μου τυχερό που ασκώ τη φυσικοθεραπεία εδώ και 30 χρόνια. Η επιστήμη άλλαξε ριζικά, και το ίδιο έκανα κι εγώ.</p>
+    <p class="philo-intro reveal d2" lang-en>After three decades in a profession, you might wonder if it has become routine. I feel exactly the opposite — I consider myself lucky to have practised physiotherapy for 30 years. The science changed radically, and so did I.</p>
+
+    <div class="philo-cards">
+      <div class="pcard reveal d1">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+        <h4 lang-el>Η δύναμη της τεχνολογίας</h4>
+        <h4 lang-en>The power of technology</h4>
+        <p lang-el>Δεν αφήνουμε τον πόνο να κυριαρχεί. Ο Μαγνητικός Διεγέρτης, ο Κρουστικός Υπέρηχος και το TECAR μας επιτρέπουν να σβήσουμε γρήγορα τη φλεγμονή και να ανακουφίσουμε τον ασθενή από τις πρώτες κιόλας συνεδρίες.</p>
+        <p lang-en>We don't let pain take over. The Magnetic Stimulator, Shockwave and TECAR let us quickly extinguish inflammation and bring relief from the very first sessions.</p>
+      </div>
+      <div class="pcard reveal d2">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M18 8a6 6 0 0 0-9.33-5M6 16a6 6 0 0 0 9.33 5M12 2v4M12 18v4"/><circle cx="12" cy="12" r="3"/></svg></div>
+        <h4 lang-el>Χέρια που «διαβάζουν»</h4>
+        <h4 lang-en>Hands that "read"</h4>
+        <p lang-el>Κανένα μηχάνημα δεν αντικαθιστά τη σωστή κλινική αξιολόγηση. Οι ειδικότητές μου στις μεθόδους McKenzie, Cyriax και Manual Therapy εντοπίζουν την ακριβή μηχανική αιτία πίσω από την κήλη ή την ισχιαλγία σας.</p>
+        <p lang-en>No machine replaces sound clinical assessment. My specialisations in McKenzie, Cyriax and Manual Therapy pinpoint the exact mechanical cause behind your herniation or sciatica.</p>
+      </div>
+      <div class="pcard reveal d3">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M3 12h4l3-9 4 18 3-9h4"/></svg></div>
+        <h4 lang-el>Η κίνηση ως μόνιμη λύση</h4>
+        <h4 lang-en>Movement as a lasting cure</h4>
+        <p lang-el>Αν περάσει ο πόνος αλλά το σώμα παραμείνει αδύναμο, το πρόβλημα επιστρέφει. Με το Pilates Reformer επαναπρογραμματίζουμε τους μύες, χτίζοντας δυνατό πυρήνα και σωστή στάση — για να μην ξαναβρεθείτε στον πάγκο της φυσικοθεραπείας.</p>
+        <p lang-en>If the pain fades but the body stays weak, the problem returns. With the Pilates Reformer we reprogram the muscles, building a strong core and proper posture — so you never end up back on the therapy table.</p>
+      </div>
+    </div>
+
+    <div class="philo-quote reveal d2">
+      <span lang-el>Στόχος μας δεν είναι απλώς να νιώσετε καλύτερα σήμερα. <em>Είναι να μάθετε στο σώμα σας πώς να παραμείνει υγιές για πάντα.</em></span>
+      <span lang-en>Our goal isn't simply to make you feel better today. <em>It's to teach your body how to stay healthy for good.</em></span>
+    </div>
+  </div>
+</section>
+
+<!-- SPACE GALLERY -->
+<section class="space" id="space">
+  <div class="wrap">
+    <div class="reveal"><span class="eyebrow"><span class="bar"></span><span lang-el>Ο Χώρος</span><span lang-en>The Space</span></span></div>
+    <h2 class="sec-title reveal d1">
+      <span lang-el>Ένα κέντρο <em>πρότυπο</em> τεχνολογικής εξέλιξης.</span>
+      <span lang-en>A centre that <em>sets the standard</em> in technology.</span>
+    </h2>
+    <div class="gallery">
+      <div class="gitem g-tall g-wide reveal lb-trigger" data-src="https://raw.githubusercontent.com/agelmet/TSEKOURAKIS/e9b10bcda10450bd187ea1480c31a4fb06074b8d/unnamed-123.jpg">
+        <img src="https://raw.githubusercontent.com/agelmet/TSEKOURAKIS/e9b10bcda10450bd187ea1480c31a4fb06074b8d/unnamed-123.jpg" alt="Αίθουσα άσκησης και αποκατάστασης">
+        <div class="zoom"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4M11 8v6M8 11h6"/></svg></div>
+      </div>
+      <div class="gitem g-tall reveal d1 lb-trigger" data-src="https://raw.githubusercontent.com/agelmet/TSEKOURAKIS/e9b10bcda10450bd187ea1480c31a4fb06074b8d/IMG_4484.JPG">
+        <img src="https://raw.githubusercontent.com/agelmet/TSEKOURAKIS/e9b10bcda10450bd187ea1480c31a4fb06074b8d/IMG_4484.JPG" alt="Εξοπλισμός φυσικοθεραπείας">
+        <div class="zoom"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4M11 8v6M8 11h6"/></svg></div>
+      </div>
+      <div class="gitem reveal d2 lb-trigger" data-src="https://raw.githubusercontent.com/agelmet/TSEKOURAKIS/e9b10bcda10450bd187ea1480c31a4fb06074b8d/IMG_4485.JPG">
+        <img src="https://raw.githubusercontent.com/agelmet/TSEKOURAKIS/e9b10bcda10450bd187ea1480c31a4fb06074b8d/IMG_4485.JPG" alt="Μηχάνημα τελευταίας τεχνολογίας">
+        <div class="zoom"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4M11 8v6M8 11h6"/></svg></div>
+      </div>
+      <div class="gitem reveal d3 lb-trigger" data-src="https://raw.githubusercontent.com/agelmet/TSEKOURAKIS/e9b10bcda10450bd187ea1480c31a4fb06074b8d/unnamed-124.jpg">
+        <img src="https://raw.githubusercontent.com/agelmet/TSEKOURAKIS/e9b10bcda10450bd187ea1480c31a4fb06074b8d/unnamed-124.jpg" alt="Power Plate και όργανα εκγύμνασης">
+        <div class="zoom"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4M11 8v6M8 11h6"/></svg></div>
+      </div>
+      <div class="gitem g-wide reveal d2 lb-trigger" data-src="https://raw.githubusercontent.com/agelmet/TSEKOURAKIS/e9b10bcda10450bd187ea1480c31a4fb06074b8d/unnamed-126.jpg">
+        <img src="https://raw.githubusercontent.com/agelmet/TSEKOURAKIS/e9b10bcda10450bd187ea1480c31a4fb06074b8d/unnamed-126.jpg" alt="Χώρος θεραπευτικής άσκησης">
+        <div class="zoom"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4M11 8v6M8 11h6"/></svg></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews" id="reviews">
+  <div class="wrap">
+    <div class="rev-head">
+      <div class="reveal">
+        <span class="eyebrow"><span class="bar"></span><span lang-el>Κριτικές Ασθενών</span><span lang-en>Patient Reviews</span></span>
+        <h2 class="sec-title">
+          <span lang-el>Η εμπιστοσύνη σας, <em>η ανταμοιβή μας.</em></span>
+          <span lang-en>Your trust is <em>our reward.</em></span>
+        </h2>
+        <div class="rev-stars"><span class="s">★★★★★</span><b lang-el>Αξιολογήσεις στο Google</b><b lang-en>Verified on Google</b></div>
+      </div>
+    </div>
+
+    <div class="rev-grid">
+      <div class="rcard reveal">
+        <div class="gq">"</div>
+        <div class="top"><div class="av">Β</div><div><div class="nm">Βάσω Κ. Ασβεστά</div><div class="st">★★★★★</div></div></div>
+        <p lang-el>Ο κ. Χρόνης είναι πάνω από όλα άνθρωπος. Με βοήθησε πολύ με το πρόβλημα στα χέρια μου, που δεν μπορούσα να λυγίσω τα δάχτυλά μου, και ήταν εξαιρετικά ευγενικός. Το προσωπικό πολύ καλό και ο χώρος καθαρός.</p>
+        <p lang-en>Mr Chronis is above all a kind person. He helped me enormously with my hands, when I couldn't bend my fingers, and he was extremely courteous. Great staff and a spotless space.</p>
+      </div>
+      <div class="rcard reveal d1">
+        <div class="gq">"</div>
+        <div class="top"><div class="av">E</div><div><div class="nm">Exano Official</div><div class="st">★★★★★</div></div></div>
+        <p lang-el>Πολύ ευγενικό προσωπικό με κατανόηση. Ο κ. Τσεκουράκης με βοήθησε πολύ με το πρόβλημα που αντιμετώπιζα. Το προτείνω με κλειστά μάτια.</p>
+        <p lang-en>Very kind and understanding staff. Mr Tsekourakis helped me greatly with the issue I had. I recommend it with my eyes closed.</p>
+      </div>
+      <div class="rcard reveal d2">
+        <div class="gq">"</div>
+        <div class="top"><div class="av">C</div><div><div class="nm">Chrysa Pap.</div><div class="st">★★★★★</div></div></div>
+        <p lang-el>Ύστερα από ρήξη πρόσθιου χιαστού στο γόνατο, οι θεραπείες βοήθησαν στην άμεση επούλωση και επέστρεψα πιο γρήγορα στον αθλητισμό. Ευγενέστατο προσωπικό!</p>
+        <p lang-en>After an ACL rupture in my knee, the treatments helped me heal quickly and return to sport faster. The friendliest staff!</p>
+      </div>
+      <div class="rcard reveal">
+        <div class="gq">"</div>
+        <div class="top"><div class="av">F</div><div><div class="nm">Fatn Fit · Local Guide</div><div class="st">★★★★★</div></div></div>
+        <p lang-el>Τα τελευταία χρόνια με έχει βοηθήσει και καθοδηγήσει σε σωστή αποκατάσταση οσφυϊκής, ποδοκνημικής και πρόσφατα στερνοκλειδικής. Συνιστώ ανεπιφύλακτα!</p>
+        <p lang-en>Over the years he has guided me through proper recovery of my lower back, ankle and recently my sternoclavicular joint. Wholeheartedly recommended!</p>
+      </div>
+      <div class="rcard reveal d1">
+        <div class="gq">"</div>
+        <div class="top"><div class="av">A</div><div><div class="nm">Alexandra Tsagala</div><div class="st">★★★★★</div></div></div>
+        <p lang-el>Είχα αυχενικό σύνδρομο και με τη φυσικοθεραπεία του κ. Τσεκουράκη είδα μεγάλη βελτίωση. Ευχάριστο περιβάλλον και πολύ ευγενικό προσωπικό.</p>
+        <p lang-en>I had cervical syndrome and with Mr Tsekourakis's physiotherapy I improved greatly. A pleasant environment and very kind staff.</p>
+      </div>
+      <div class="rcard reveal d2">
+        <div class="gq">"</div>
+        <div class="top"><div class="av">Γ</div><div><div class="nm">Γρηγόρης Σκορδαλιάς</div><div class="st">★★★★★</div></div></div>
+        <p lang-el>Έχω χρόνιο πρόβλημα με τη μέση. Ο κ. Τσεκουράκης με βοήθησε πολύ και είχα άμεση βελτίωση. Ευγενέστατο προσωπικό, πάντα με χαμόγελο.</p>
+        <p lang-en>I have a chronic lower-back issue. Mr Tsekourakis helped me a lot and I improved immediately. The friendliest staff, always smiling.</p>
+      </div>
+      <div class="rcard reveal">
+        <div class="gq">"</div>
+        <div class="top"><div class="av">T</div><div><div class="nm">Thanos Kosmidis · Local Guide</div><div class="st">★★★★★</div></div></div>
+        <p lang-el>Ωραίο περιβάλλον, εξειδικευμένο προσωπικό με ευγένεια και χαμόγελο. Με βοήθησαν με το αυχενικό μου πρόβλημα. Το συστήνω ανεπιφύλακτα!</p>
+        <p lang-en>Lovely environment, specialised staff full of courtesy and smiles. They helped me with my cervical problem. Highly recommended!</p>
+      </div>
+      <div class="rcard reveal d1">
+        <div class="gq">"</div>
+        <div class="top"><div class="av">Δ</div><div><div class="nm">Δέσποινα Σταΐκου · Local Guide</div><div class="st">★★★★★</div></div></div>
+        <p lang-el>Εξαιρετική ομάδα! Επαγγελματισμός και ζεστασιά σε κάθε επίσκεψη.</p>
+        <p lang-en>An exceptional team! Professionalism and warmth on every visit.</p>
+      </div>
+    </div>
+
+    <div class="rev-cta reveal d1">
+      <a href="https://www.google.com/search?client=safari&hs=YFp&sa=X&sca_esv=f2191a8c18cbf8a0&rls=en&biw=1728&bih=994&sxsrf=APpeQnuoOD4VmaKUkCUM7NKfLG6emPNlIA:1782635729435&q=%CE%A4%CF%83%CE%B5%CE%BA%CE%BF%CF%85%CF%81%CE%AC%CE%BA%CE%B7%CF%82+%CE%A0%CE%BF%CE%BB%CF%85%CF%87%CF%81%CF%8C%CE%BD%CE%B7%CF%82+Reviews&rldimm=3112456846944549032&tbm=lcl&hl=en-GR#lkt=LocalPoiReviews" target="_blank" rel="noopener" class="btn btn-google">
+        <svg viewBox="0 0 24 24" width="18" height="18"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.76h3.56c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.56-2.76c-.98.66-2.23 1.06-3.72 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84A11 11 0 0 0 12 23z"/><path fill="#FBBC05" d="M5.84 14.11a6.6 6.6 0 0 1 0-4.22V7.05H2.18a11 11 0 0 0 0 9.9l3.66-2.84z"/><path fill="#EA4335" d="M12 4.75c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 1.46 14.97.5 12 .5A11 11 0 0 0 2.18 7.05l3.66 2.84c.87-2.6 3.3-5.14 6.16-5.14z"/></svg>
+        <span lang-el>Διαβάστε τις κριτικές στο Google</span><span lang-en>Read reviews on Google</span>
+      </a>
+      <a href="https://www.google.com/search?client=safari&hs=YFp&sa=X&sca_esv=f2191a8c18cbf8a0&rls=en&q=%CE%A4%CF%83%CE%B5%CE%BA%CE%BF%CF%85%CF%81%CE%AC%CE%BA%CE%B7%CF%82+%CE%A0%CE%BF%CE%BB%CF%85%CF%87%CF%81%CF%8C%CE%BD%CE%B7%CF%82+Reviews&rldimm=3112456846944549032&tbm=lcl&hl=en-GR#lkt=LocalPoiReviews" target="_blank" rel="noopener" class="btn btn-rate">
+        <span lang-el>Αξιολογήστε την εμπειρία σας</span><span lang-en>Rate your experience</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="reveal"><span class="eyebrow"><span class="bar"></span><span lang-el>Επικοινωνία</span><span lang-en>Contact</span></span></div>
+    <h2 class="sec-title reveal d1">
+      <span lang-el>Κλείστε το ραντεβού σας <em>σήμερα.</em></span>
+      <span lang-en>Book your appointment <em>today.</em></span>
+    </h2>
+    <div class="contact-grid">
+      <div class="reveal d1">
+        <div class="info-block">
+          <div class="lab"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span lang-el>Διεύθυνση</span><span lang-en>Address</span></div>
+          <div class="val"><a href="https://maps.google.com/?q=Εγνατίας+48+Πυλαία+Θεσσαλονίκη" target="_blank" rel="noopener">Εγνατίας 48, Πυλαία</a></div>
+          <div class="sub" lang-el>Τ.Κ. 555 35, Θεσσαλονίκη · Ανατολική Θεσσαλονίκη</div>
+          <div class="sub" lang-en>555 35, Thessaloniki · Eastern Thessaloniki</div>
+        </div>
+        <div class="info-block">
+          <div class="lab"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span lang-el>Τηλέφωνα</span><span lang-en>Phone</span></div>
+          <div class="val"><a href="tel:+302310314253">2310 314253</a> &nbsp;·&nbsp; <a href="tel:+306972754210">6972 754210</a></div>
+        </div>
+        <div class="info-block">
+          <div class="lab"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><span lang-el>Ωράριο Λειτουργίας</span><span lang-en>Opening Hours</span></div>
+          <div class="hours-grid">
+            <div class="h"><div class="hl" lang-el>Πρωί</div><div class="hl" lang-en>Morning</div><div class="ht">08:00 – 12:30</div></div>
+            <div class="h"><div class="hl" lang-el>Απόγευμα</div><div class="hl" lang-en>Afternoon</div><div class="ht">17:00 – 21:00</div></div>
+          </div>
+          <div class="sub" lang-el>Οι συνεδρίες πραγματοποιούνται κατόπιν ραντεβού.</div>
+          <div class="sub" lang-en>Sessions are by appointment only.</div>
+        </div>
+        <div class="info-block">
+          <div class="eopyy-badge"><span class="dot"></span><b lang-el>Συμβεβλημένο με τον ΕΟΠΥΥ</b><b lang-en>Affiliated with ΕΟΠΥΥ</b></div>
+        </div>
+      </div>
+      <div class="map-frame reveal d2">
+        <iframe src="https://www.google.com/maps?q=Εγνατίας+48,+Πυλαία+555+35,+Θεσσαλονίκη&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Χάρτης Πυλαία"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-top">
+    <div class="foot-brand">
+      <div class="fb">
+        <img src="https://raw.githubusercontent.com/agelmet/TSEKOURAKIS/e9b10bcda10450bd187ea1480c31a4fb06074b8d/logosots.jpg" alt="Λογότυπο">
+        <b>Π. Τσεκουράκης</b>
+      </div>
+      <p lang-el>Σύγχρονη φυσικοθεραπεία & αποκατάσταση στην Πυλαία. Τριάντα χρόνια κλινικής εμπειρίας στην υπηρεσία της υγείας σας.</p>
+      <p lang-en>Modern physiotherapy & rehabilitation in Pylaia. Thirty years of clinical experience at the service of your health.</p>
+    </div>
+    <div class="foot-cols">
+      <div class="foot-col">
+        <h5 lang-el>Πλοήγηση</h5><h5 lang-en>Navigate</h5>
+        <a href="#about"><span lang-el>Ο Ιατρός</span><span lang-en>About</span></a>
+        <a href="#services"><span lang-el>Υπηρεσίες</span><span lang-en>Services</span></a>
+        <a href="#space"><span lang-el>Ο Χώρος</span><span lang-en>The Space</span></a>
+        <a href="#reviews"><span lang-el>Κριτικές</span><span lang-en>Reviews</span></a>
+      </div>
+      <div class="foot-col">
+        <h5 lang-el>Επικοινωνία</h5><h5 lang-en>Contact</h5>
+        <a href="tel:+302310314253">2310 314253</a>
+        <a href="tel:+306972754210">6972 754210</a>
+        <p>Εγνατίας 48, Πυλαία</p>
+        <p>555 35, Θεσσαλονίκη</p>
+      </div>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <div>© <span id="yr"></span> Πολυχρόνης Τσεκουράκης · <span lang-el>Με επιφύλαξη παντός δικαιώματος.</span><span lang-en>All rights reserved.</span></div>
+    <div><span lang-el>Σχεδιασμός & κατασκευή από</span><span lang-en>Designed & built by</span> <a href="https://www.advonmedia.com" target="_blank" rel="noopener">Advon Media</a></div>
+  </div>
+</footer>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <button class="lb-close" id="lbClose" aria-label="Close"></button>
+  <img id="lbImg" src="" alt="">
+</div>
+
+<!-- FLOAT CALL -->
+<a href="tel:+302310314253" class="float-call" id="floatCall" aria-label="Call">
+  <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+</a>
+
+<script>
+// PRELOADER
+window.addEventListener('load',()=>{setTimeout(()=>document.getElementById('preloader').classList.add('done'),550)});
+
+// HEADER SCROLL
+const header=document.getElementById('header');
+const floatCall=document.getElementById('floatCall');
+window.addEventListener('scroll',()=>{
+  const y=window.scrollY;
+  header.classList.toggle('scrolled',y>40);
+  floatCall.classList.toggle('show',y>700);
+});
+
+// MOBILE MENU
+const burger=document.getElementById('burger');
+const mm=document.getElementById('mobileMenu');
+const mc=document.getElementById('mobileClose');
+burger.addEventListener('click',()=>{mm.classList.add('open');document.body.style.overflow='hidden'});
+mc.addEventListener('click',()=>{mm.classList.remove('open');document.body.style.overflow=''});
+mm.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{mm.classList.remove('open');document.body.style.overflow=''}));
+
+// LANGUAGE
+function setLang(lang){
+  document.body.classList.toggle('en',lang==='en');
+  document.documentElement.lang=lang;
+  document.querySelectorAll('.lang-switch button,.mobile-lang button').forEach(b=>b.classList.toggle('active',b.dataset.lang===lang));
+}
+document.querySelectorAll('.lang-switch button,.mobile-lang button').forEach(b=>{
+  b.addEventListener('click',()=>setLang(b.dataset.lang));
+});
+
+// REVEAL ON SCROLL
+const io=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}});
+},{threshold:0.12,rootMargin:'0px 0px -60px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+// LIGHTBOX
+const lb=document.getElementById('lightbox');
+const lbImg=document.getElementById('lbImg');
+const lbClose=document.getElementById('lbClose');
+document.querySelectorAll('.lb-trigger').forEach(el=>{
+  el.addEventListener('click',()=>{
+    lbImg.src=el.dataset.src;lb.classList.add('open');document.body.style.overflow='hidden';
+  });
+});
+function closeLb(){lb.classList.remove('open');document.body.style.overflow='';setTimeout(()=>lbImg.src='',400)}
+lbClose.addEventListener('click',closeLb);
+lb.addEventListener('click',e=>{if(e.target===lb)closeLb()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLb()});
+
+// YEAR
+document.getElementById('yr').textContent=new Date().getFullYear();
+
+// HERO PARALLAX (subtle, contained by overflow:hidden on .hero)
+const heroImg=document.querySelector('.hero-bg img');
+let heroDone=false;
+heroImg.addEventListener('animationend',()=>{heroDone=true});
+window.addEventListener('scroll',()=>{
+  const y=window.scrollY;
+  if(heroDone&&y<900&&heroImg)heroImg.style.transform=`scale(1.1) translateY(${y*0.14}px)`;
+});
+</script>
+</body>
+</html>
