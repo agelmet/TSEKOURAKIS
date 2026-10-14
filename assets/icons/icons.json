@@ -1,0 +1,16 @@
+{
+ "source": {
+  "kind": "file",
+  "ref": "assets/img/tsekourakis-logo.svg"
+ },
+ "source_md5": "d7bba9ffe06bd71348b83c7379757645",
+ "version": "610efd30",
+ "tile": "#FFFFFF",
+ "crop": null,
+ "header": [
+  "inline",
+  "index.html",
+  "8acdfb242853a1ea934a811c1ac4c9d2"
+ ],
+ "made": "2026-10-14"
+}
